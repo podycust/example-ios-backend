@@ -54,8 +54,9 @@ post '/charge' do
       :currency => "gbp",
       :customer => customer,
       :source => source,
-      :description => "Your Face Payment",
+      :description => "Your Faces Payment",
       :shipping => payload[:shipping],
+      receipt_email: => payload[:receipt_email],
     )
   rescue Stripe::StripeError => e
     status 402
