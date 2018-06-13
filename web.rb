@@ -79,7 +79,7 @@ def authenticate!
     end
   else
     begin
-      @customer = Stripe::Customer.create(:description => "mobile SDK example customer")
+      @customer = Stripe::Customer.create(:description => payload["cust"])
     rescue Stripe::InvalidRequestError
     end
     session[:customer_id] = @customer.id
