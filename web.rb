@@ -79,7 +79,7 @@ def authenticate!
     end
   else
     begin
-      @customer = Stripe::Customer.create(:description => payload["cust"])
+      @customer = Stripe::Customer.create(:description => "Your Face Customer")
     rescue Stripe::InvalidRequestError
     end
     session[:customer_id] = @customer.id
