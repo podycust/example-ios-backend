@@ -56,6 +56,7 @@ post '/charge' do
       :source => source,
       :description => "Your Faces Payment",
       :shipping => payload[:shipping],
+      :receipt_email: 'jenny.rosen@example.com',
     )
   rescue Stripe::StripeError => e
     status 402
