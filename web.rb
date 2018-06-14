@@ -97,7 +97,7 @@ post '/create_charge' do
   begin
     charge = Stripe::Charge.create(
       :amount => params[:amount], # this number should be in cents
-      :currency => "usd",
+      :currency => "gbp",
       :source => params[:source],
       :description => "Example Charge"
     )
@@ -133,7 +133,7 @@ post '/stripe-webhook' do
         :currency => source.currency,
         :source => source.id,
         :customer => source.metadata["customer"],
-        :description => "Example Charge"
+        :description => "Your Faces Payment"
       )
     rescue Stripe::StripeError => e
       return log_info("Error creating charge: #{e.message}")
