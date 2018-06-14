@@ -47,6 +47,10 @@ post '/charge' do
 
   source = payload[:source]
   customer = payload[:customer_id] || @customer.id
+  cu = Stripe::Customer.retrieve(customer)
+cu.description = payload[:cust]
+cu.source = source
+cu.save
   # Create the charge on Stripe's servers - this will charge the user's card
   begin
     charge = Stripe::Charge.create(
